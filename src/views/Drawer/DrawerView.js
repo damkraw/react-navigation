@@ -84,7 +84,9 @@ export default class DrawerView<T: *> extends PureComponent<void, Props, void> {
     const { navigation } = this.props;
     const { routes, index } = navigation.state;
     if (routes[index].routeName !== 'DrawerClose') {
-      this.props.navigation.navigate('DrawerClose');
+      if (this.props.navigation.dispatch !== undefined) {
+        this.props.navigation.navigate('DrawerClose');
+      }
     }
   };
 
